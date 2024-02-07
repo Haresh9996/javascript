@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        
+        // const numbers = [4, 6, 3, 6, 8]
+
+        // numbers.forEach((number, index, number1)=>{
+        //     console.log(number,number* index, number1)
+        // })
+
+        // const users = [
+        //     { userId: 1, firstName: "haresh", age: 26 },
+        //     { userId: 2, firstName: "rohit", age: 25 },
+        //     { userId: 3, firstName: "nandan", age: 27 }
+        // ]
+        // console.log(users.firstName)
+
+
+        // foreach method
+        // users.forEach((user) => {
+        //     console.log(user, user.userId, user.firstName);
+        // });
+
+        // map method
+        // const new_user = users.map((user, index)=>{
+        //     return user.firstName;
+        // })
+        // console.log(new_user)
+
+        // filter method
+        // const numbers = [3, 43, 4, 54, 3, 434,34 ,34, 8]
+
+        // const is_even = numbers.filter((number)=>{
+        //     return number % 2 === 0;
+        // })
+        // const is_odd = numbers.filter((number)=>{
+        //     // return number % 2 === 1;
+        //     return number % 2 !== 0;
+        // })
+
+        // console.log(is_even)
+        // console.log(is_odd)
+
+        // reduce method
+
+        // const user_card = [
+        //     {productId: 1, product: "laptop", price: 45000},
+        //     {productId: 2, product: "mobile", price: 25000},
+        //     {productId: 3, product: "headphone", price: 2500},
+        //     {productId: 4, product: "back cover", price: 700},
+        //     {productId: 5, product: "laptop bag", price: 3000}
+        // ]
+        
+
+        // const total = user_card.reduce((totalprice, currentprice)=>{
+        //     return totalprice + currentprice.price;
+        // }, 0)
+
+        // console.log(total)
+
+        // sort method
+
+        // const sortingdata = user_card.slice(0).sort((a, b)=>{
+        //     return b.price - a.price;
+        // })
+        // console.log(sortingdata)
+
+        // console.log(user_card)
+
+        // find method
+        // const finded = user_card.find((product)=>{
+        //     return product.productId === 3;
+        // })
+        // console.log(finded)
+
+        // every methd
+
+        // const isEvery = user_card.every((product_price)=>{
+        //     return product_price.price < 50000;
+        // })
+        // console.log(isEvery)
+
+        // some method
+        // const isSome = user_card.some((product_price)=>{
+        //     return product_price.price > 50000;
+        // })
+        // console.log(isSome)
+
+        // fill method
+        // const new_array = new Array(5).fill(4)
+        // const second_new_array = new_array.fill(2, 3, 5)
+        // console.log(new_array) // it will change the value of previous array
+
+        // splice method
+        // const deleted_obj = user_card.splice(3, 1, {productId:4, product: "macbook", price: 150000})
+        // console.log(user_card)
+        // console.log(deleted_obj)
+
+
+        // for practice purpose only
+        const user_card = [
+            {productId: 1, product: "laptop", price: 45000},
+            {productId: 2, product: "mobile", price: 25000},
+            {productId: 3, product: "headphone", price: 2500},
+            {productId: 4, product: "back cover", price: 700},
+            {productId: 5, product: "laptop bag", price: 3000}
+        ]
+        const users = [
+            { userId: 1, firstName: "haresh", age: 26 },
+            { userId: 2, firstName: "rohit", age: 25 },
+            { userId: 3, firstName: "nandan", age: 27 }
+        ]
+        const numbers = [3, 43, 4, 54, 3, 434,34 ,34, 8]
+
+        // foreach, map, filter, reduce, sort, find, every, some, fill, splice
+
+        // foreach method
+        // user_card.forEach(product => {
+        //     console.log(`${product.productId} is ${product.product} and its price is ${product.price}`)
+        // });
+
+        // map method : it will allways provide returned value 
+        // const returned_value = users.map((user, index)=>{
+        //     return `${user.firstName}'s user id is ${user.userId} and his age is ${user.age}`;
+        // })
+        // console.log(returned_value)
+
+        // filter method
+        // Ex. 1
+        // const isEven = numbers.filter((number)=>{
+        //     return number % 2 ===0;
+        // })
+        // const isOdd = numbers.filter((number)=>{
+        //     return number % 2 !==0;
+        // })
+        // console.log(isOdd)
+
+        // Ex. 2
+        // const lower = user_card.filter((price)=>{
+        //     return price.price < 4000;
+        // })
+        // const higher = user_card.filter((price)=>{
+        //     return price.price > 5000;
+        // })
+        // console.log(higher)
+
+        // reduce method
+        // const reducedvalue = user_card.reduce((totalvalue, currentprice)=>{
+        //     return totalvalue + currentprice.price;
+        // }, 0)
+        // console.log(reducedvalue)
+
+        // sort method
+        // const shortedList = user_card.slice(0).sort((lower, higher)=>{
+        //     return lower.price - higher.price;
+        // })
+        // console.log(shortedList)
+
+        // find method
+        // const finded = users.find(id =>{
+        //     return id.userId === 2;
+        // })
+        // console.log(finded)
+
+        // every method
+        // const everything = user_card.every((price)=>{
+        //     return price.price <= 30000;
+        // })
+        // console.log(everything)
+
+        // some method
+        // const anyone = user_card.some((price)=>{
+        //     return price.price <= 1000;
+        // })
+        // console.log(anyone)
+
+        // fill method
+        // const newarr = new Array(5).fill(0)
+        // const changedarr = newarr.slice(0).fill(1, 2, 4)
+        // console.log(newarr)
+        // console.log(changedarr)
+
+        // splice method
+        // const newnum = numbers.splice(2, 3, "this is inserted", "and this is extra inserted")
+        // console.log(numbers)
+        // console.log(newnum)
+
+        // foreach, map, filter, reduce, sort, find, every, some, fill, splice
+
+
+
+    </script>
+</body>
+
+</html>

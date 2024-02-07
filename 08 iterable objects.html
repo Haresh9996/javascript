@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // set //like array
+        
+        // const numbers = [3, 43, 3, 4, 54, 3, 434,34 ,34, 8]
+        // const newset = new Set(numbers);
+        // // newset.add(numbers);
+
+        // console.log(numbers)
+        // console.log(numbers.length)
+        // console.log(newset)
+
+        // let length = 0;
+        // for (const number of newset) {
+        //     length++;
+        // }
+        // console.log(length)
+
+        // map //like object
+
+        const users = [
+            { userId: 1, firstName: "haresh", age: 26 },
+            { userId: 2, firstName: "rohit", age: 25 },
+            { userId: 3, firstName: "nandan", age: 27 }
+        ]
+
+        const newmap = new Map();
+        newmap.set(1, "one")
+        newmap.set("hello", "world")
+        newmap.set(users[0], {age: 26, gender: "male"})
+        console.log(newmap)
+        // console.log(newmap.get(users[0]))
+        // console.log(newmap.get(users[0]).gender)
+
+
+        // const [emp1, ...emp2] = users;
+        // console.log(emp1)
+        // console.log(emp2)
+       
+        // const {...emp3} = emp1;
+        // emp1.gender = "male";
+        // console.log(emp1)
+        // console.log(emp3)
+
+        // const emp4 = Object.assign({}, emp2) // clone emp2
+        // console.log(emp4)
+
+        
+        // optional chaining
+        // emp1.contactInfo = {contactNumber: 123456789, address: "JND"}
+
+        // console.log(emp1.contactInfo.contactNumber)
+        // console.log(emp1?.contactInfo?.contactNumber)
+
+
+       
+
+
+
+    </script>
+</body>
+</html>

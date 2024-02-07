@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background: #373939;
+        }
+        .nav-container{
+            max-width: 800px;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: auto;
+            text-transform: uppercase;
+            color: whitesmoke;
+        }
+        .nav-container .logo{
+            font-size: 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            color: whitesmoke;
+        }
+
+        .nav-list li{
+            list-style: none;
+            display: inline-block;
+            margin-inline-start: 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .todo{
+            width: 90%;
+            max-width: 650px;
+            margin: 5rem auto;
+            display: flex;
+
+        }
+
+        .todo input{
+            padding: 1rem 2rem;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid grey;
+        }
+        
+        .todo input[type = "text"]{
+            width: 100%;
+            border-bottom-left-radius: .5rem;
+            background-color: #efefef;
+        }
+        .todo input[type = "submit"]{
+            border-bottom-right-radius: .5rem;
+            font-weight: 600;
+        }
+        .form-section{
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .form{
+            /* display: grid; */
+            /* grid-template-columns: 1fr 1fr; */
+            background-color: #efefef;
+            padding: 1rem;
+            margin-bottom: 5rem;
+            border-radius: .5rem;
+        }
+        .input-group{
+            margin: 1rem;
+        }
+        .input-group label, .input-textarea label{
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .input-textarea{
+            margin-inline: 1rem;
+        }
+        .input-group input, textarea{
+            padding: .5rem 1rem;
+            display: block;
+            width: 100%;
+        }
+        .input-group input{
+            border: 1px solid #373939;
+            border-top: none;
+            border-left: none;
+            /* border-bottom-left-radius: .5rem; */
+            border-bottom-right-radius: .5rem;
+        }
+        .input-btn{
+            text-align: center;
+            margin-block: 2rem;
+        }
+        .input-btn button{
+            padding: .5rem 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">to do</a>
+
+            <ul class="nav-list">
+                <li>home</li>
+                <li>about</li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="todo">
+            <input type="text" name="" id="">
+            <input type="submit" name="" id="">
+        </div>
+    </section>
+
+    <section class="form-section">
+        <form class="form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm-password</label>
+                <input type="password" name="confirm-password" id="confirm-password">
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="input-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="number" name="mobile" id="mobile">
+            </div>
+            <div class="input-textarea">
+                <label for="textarea">Feedback</label>
+                <textarea name="textarea" id="textarea"></textarea>
+            </div>
+            <div class="input-btn">
+                <button type="submit">SUBMIT</button>
+            </div>
+        </form>
+
+    </section>
+</body>
+
+</html>
