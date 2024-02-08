@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let key = "email";
+        // const obj = {
+        //     firstName: "haresh",
+        //     lastName: "chudasama",
+        //     age: 26,
+        //     hobbies: ["listening"]
+        // }
+
+        // obj.hobbies.push("swimming");
+        // obj.key = "haresh9669@gmail.com" // X
+        // obj[key] = "haresh9669@gmail.com";
+
+        // console.log(obj.hobbies)
+        // console.log(obj)
+
+        // for in loop
+        // for (const key in obj) {
+        //     console.log(`${key} : ${obj[key]}`)
+        // }
+
+        // Object.keys
+
+        // const obj1 = Object.keys(obj); //it gives an array
+        // console.log(typeof obj1); //object
+        // console.log(Array.isArray(obj1)); // true
+        // console.log(obj1);
+
+        // now can use for of loop
+
+        // for (const i of Object.keys(obj)) {
+        //     console.log(i,obj[i])
+        // }
+
+
+        // computed properties
+
+        let key1 = "objkey1"
+        let key2 = "objkey2"
+
+        let value1 = "objvalue1"
+        let value2 = "objvalue2"
+
+        // first method
+        const obj = {
+            [key1]: value1,
+            [key2]: value2
+        }
+        // second method
+        // const obj = {}
+
+        // obj[key1] = value1
+        // obj[key2] = value2
+
+        // console.log(obj)
+
+        // spread operator in object
+        const obj1 ={
+            objkey3: "objvalue3",
+            objkey4: "objvalue4",
+        }
+
+        // const newobj = {...obj, obj1, ..."abc"} //in the case of abc index becomes key and value become value
+        // const abc = {..."abcdefghijklmnopqrstuvwxyz"}
+
+        // console.log(newobj)
+        // console.log(abc)
+
+        //object destructring
+        const newobj = {
+            objkey1: "objvalue1",
+            objkey2: "objvalue2",
+            objkey3: "objvalue3",
+            objkey4: "objvalue4",
+        }
+
+        let {objkey1, objkey2:var2, ...thirdobj} = newobj;
+
+        // console.log(objkey1) //bydefault variable name is key
+        // // console.log(objkey2)
+        // console.log(var2)
+        // console.log(thirdobj)
+
+        // objects inside array
+        const users = [
+            {userId:1, firstName: "haresh", age: 26},
+            {userId:2, firstName: "rohit", age: 25},
+            {userId:3, firstName: "nandan", age: 27}
+        ]
+        // for(let user of users){
+        //     console.log(user.userId, user.firstName, user.age)
+        // }
+
+        // nested destructuring
+        const [user1, , {firstName:user3name}] = users;
+        console.log(user1)
+        console.log(user3name)
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // this keyword
+
+        // function info (hobby){
+        //     console.log(`name is ${this.firstName} and age is ${this.age}, and hobby is ${hobby}`)
+        // }
+        //  const user1 = { userId: 1, firstName: "haresh", age: 26, about: info }
+        //  const user2 =  {userId: 2, firstName: "rohit", age: 25, about: info }
+        //  const user3 =  {userId: 3, firstName: "nnnn", age: 22, }
+        //  const user4 =  {userId: 2, firstName: "bbb", age: 35, }
+
+        //  //  call method
+        //  user1.about.call(user3, "cricket")
+
+        //apply method
+        //  info.apply(user3, ["cricket"])
+
+        //  bind method
+        // const newfunc = info.bind(user4)
+        // newfunc()
+
+        // proto ma stote thay
+        // const info = {
+        //     about: function () {
+        //         return `name is ${this.firstName} ${this.lastName}`;
+        //     },
+        //     is18() {
+        //         return this.age >= 18;
+        //     }
+        // }
+
+        // const Users = function (firstName, lastName, age) {
+        //     const user = Object.create(info)
+        //     // const user = Object.create(users.prototype) 
+        //     user.firstName = firstName;
+        //     user.lastName = lastName;
+        //     user.age = age;
+
+        //     return user
+        // }
+
+        //prototype ma store thay, only functions provides this(empty object)
+
+        // Users.prototype.about = function () {
+        //     return `name is ${this.firstName} ${this.lastName}`;
+        // }
+        // Users.prototype.is18 = function () {
+        //     return this.age >= 18;
+        // }
+
+        // const user1 = Users("chudasama", "haresh", 25)
+        // console.log(Users)
+        // console.log(user1)
+        // console.log(user1.about())
+        // console.log(user1.is18())
+
+        // new keyword
+        // const Newuserlist = function (firstName, lastName, age) {
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //     this.age = age;
+        // }
+        // Newuserlist.prototype.about = function () {
+        //     return `name is ${this.firstName} ${this.lastName}`;
+        // }
+        // Newuserlist.prototype.is18 = function () {
+        //     return this.age >= 18;
+        // }
+
+        // const emp1 = new Newuserlist("haresh", "chudasama", 26)
+        // console.log(emp1)
+
+
+        // class
+
+        class createUser {
+            constructor(firstName, lastName, age) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+            }
+            get about() {
+                return `My name is ${this.firstName}, and age is ${this.age}`
+            }
+            get is18() {
+                return this.age >= 18;
+            }
+
+            set setName(fullName) {
+                const [firstName, lastName] = fullName.split(" ")
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+        }
+
+        const user1 = new createUser("haresh", "chudasama", 26);
+        const user2 = new createUser("nandan", "mehta", 27);
+        // console.log(user1.is18)
+        // console.log(user2)
+
+        //getters and setters
+        // get
+        // console.log(user1.is18);
+        // console.log(about);
+
+        // set
+        user1.setName = "mohit davda"
+        console.log(user1)
+
+        // subclass or extend 
+
+        class animal{
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+
+            eat(food){
+                return `${this.name} is eating/drinking ${food}`
+            }
+        }
+
+        // const cat = new animal("cat", 4, "milk")
+        // console.log(cat.eat("milk"))
+
+        class birds extends animal{
+            constructor(name, age, speed){
+                super(name, age)
+                this.speed = speed;
+            }
+
+            static otherInfo(){
+                return "this is static method";
+            }
+
+            static birdsData = "this is static data";
+
+            info(){
+                return `${this.name} can fly ${this.speed} km above the ground.`
+            }
+            eat(food){
+                return `modified eat method: ${this.name} is eating/drinking ${food}`
+            }
+
+        }
+
+        const sparrow = new birds("sparrow", 1, 2);
+        // console.log(birds.prototype)
+        // console.log(sparrow)
+        // console.log(sparrow.eat("milk"))
+        // console.log(sparrow.info())
+
+        // static method
+        console.log(birds.otherInfo())
+
+        // static property
+        console.log(birds.birdsData)
+
+
+    </script>
+</body>
+
+</html>
