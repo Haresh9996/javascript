@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color changer</title>
+    <style>
+        main {
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            border: 1px solid grey;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        button {
+            padding: 1rem 2rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Current color: <span class="current-color">rgb (255, 255, 255)</span></h1>
+            <button type="button">Click here to change color</button>
+        </div>
+    </main>
+
+    <script>
+        const body = document.body;
+        const currentColor = document.querySelector(".current-color");
+        const btn = document.querySelector("button");
+
+        function randomClr() {
+            let red = Math.floor(Math.random() * 255);
+            let green = Math.floor(Math.random() * 255);
+            let blue = Math.floor(Math.random() * 255);
+            let generatedClr = `rgb(${red}, ${green}, ${blue})`;
+            return generatedClr;
+        }
+
+        btn.addEventListener("click", () => {
+            const rgb = randomClr()
+            body.style.backgroundColor = rgb;
+            currentColor.textContent = rgb;
+        })
+
+
+    </script>
+</body>
+
+</html>
