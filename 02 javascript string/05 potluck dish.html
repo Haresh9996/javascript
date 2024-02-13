@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function potluckdish(name, dish){
+            let newname = name.toUpperCase();
+            let newdish = dish.toUpperCase();
+            if(newname[0] == newdish[0] && newname[newname.length - 1] == newdish[newdish.length - 1]){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        console.log(potluckdish("rahul", "rajma chawal"))
+    </script>
+</body>
+</html>
