@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumOfTwoArray(arr1, arr2){
+            let sum1 = 0;
+            let sum2 = 0;
+
+            for(let i =0; i<arr1.length; i++){
+                sum1 = sum1 + arr1[i];
+            }
+            for(let i =0; i<arr2.length; i++){
+                sum2 = sum2 + arr2[i];
+            }
+            let totalsum = sum1 + sum2;
+            return totalsum;
+        }
+        console.log(sumOfTwoArray([1,2,3], [4,5,6]))
+    </script>
+</body>
+</html>
