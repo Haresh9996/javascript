@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Protest+Riot&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Nanum Gothic", sans-serif;
+}
+body{
+    min-height: 100%;
+    background-color: rgb(223, 223, 223);
+}
+
+::-webkit-scrollbar{
+    background-color: #211951;
+    width: .75rem;
+}
+::-webkit-scrollbar-button{
+    background-color: silver;
+}
+::-webkit-scrollbar-thumb{
+    background-color: silver;
+}
+
+.container nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    box-shadow: 0 2px 5px silver;
+    /* mix-blend-mode: difference; */
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(20px);
+}
+nav ul{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+nav ul li{
+    list-style: none;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+nav ul li a{
+    text-decoration: none;
+}
+.logo{
+    font-size: 2rem;
+    font-weight: 900;
+    pointer-events: auto;
+    color: #211951;
+}
+nav div select{
+    border: 1px solid grey;
+    padding: .5rem;
+    outline: none;
+    border-radius: .5rem;
+    font-weight: 700;
+}
+nav div select option{
+    font-weight: 700;
+    border-radius: .5rem;
+    padding: .5rem;
+    border: 1px solid grey;
+}
+.div{
+    padding: 2rem;
+}
+ h2{
+    margin: .5rem 2rem;
+    display: inline-block;
+    text-align: center;
+    background-color: rgba(22, 22, 71, 0.905);
+    color: white;
+    border-radius: .5rem;
+    padding: 1rem 2rem;    
+}
+.div{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.div .cards{
+    max-width: 350px;
+    height: 400px;
+    background-color: white;
+    padding: 1rem;
+    overflow: hidden;
+}
+.cards img{
+    width: 100%;
+    max-width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
+.card-body{
+    margin-top: 1.5rem;
+}
+.card-body p{
+    margin-block: .5rem;
+    font-weight: 700;
+}
+
+  
