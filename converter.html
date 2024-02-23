@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            color: white;
+        }
+        body{
+            min-height: 100dvh;
+            background-color: #000;
+        }
+        .container{
+            width: 100%;
+            height: 100dvh;
+            display: flex;
+            place-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        form{
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 3rem;
+            border-radius: .75rem;
+        }
+        h2{
+            background: linear-gradient(45deg, rgb(225, 225, 225), rgba(186, 186, 186, 0.773), #6c6c6c);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            font-size: 2.5rem;
+        }
+        .input-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        form span{
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        .input-container label{
+            font-size: 1.23rem;
+        }
+        .input-container input{
+            padding: .5rem;
+            background-color: #252525;
+            color: #c6c6c6;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            border-radius: .5rem;
+            text-align: center;
+        }
+        .input-container input:focus{
+            border: 1px solid whitesmoke;
+        }
+        .input-container input:focus{
+            border: 1px solid white;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Temperature converter</h2>
+
+        <form>
+            <div class="input-container">
+                <label for="cel">Celsius</label>
+                <input type="number" name="" id="cel" value="0">
+            </div>
+            <span>=</span>
+            <div class="input-container">
+                <label for="feh">Fahrenheit</label>
+                <input type="number" name="" id="feh" value="32">
+            </div>
+        </form>
+    </div>
+    <script>
+        const cel = document.getElementById("cel");
+        const feh = document.getElementById("feh");
+
+        // (0°C × 9/5) + 32 = 32°F
+
+        cel.addEventListener("input", (e)=>{         
+            const celvalue = cel.value;
+            let fehValue = (celvalue * 9/5) + 32;
+            if(!Number.isInteger(fehValue)){
+                fehValue = fehValue.toFixed(4);
+            }
+            feh.value = fehValue;
+            
+        })
+        feh.addEventListener("input", ()=>{
+            const fehValue = feh.value;
+
+            let celvalue = (fehValue - 32) * 5/9;
+            if(!Number.isInteger(celvalue)){
+                celvalue = celvalue.toFixed(4)
+            }
+
+            cel.value = celvalue;
+        })
+        
+    </script>
+</body>
+</html>
