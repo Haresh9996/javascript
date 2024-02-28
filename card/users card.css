@@ -13,21 +13,18 @@
         .container {
             max-width: 100%;
             min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-wrap: wrap;
             position: relative;
-            padding: 3rem;
             gap: 2rem;
         }
 
         .card {
-            width: 45%;
-            max-width: 300px;
+            width: 100%;
+            margin: 2rem auto;
+            max-width: 700px;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
+            /* flex-direction: column; */
             align-items: center;
             gap: 1rem;
             border-radius: 1rem;
@@ -44,6 +41,27 @@
             background: var(--second-conic);
         }
 
+        .fa-trash-can{
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+        }
+        .fa-pen-to-square{
+            position: absolute;
+            right: 4rem;
+            top: 1rem;
+            font-size: 1.5rem;
+        }
+        .fa-trash-can:hover{
+            opacity: .8;
+            cursor: pointer;
+        }
+        .fa-pen-to-square:hover{
+            opacity: .8;
+            cursor: pointer;
+        }
+
         .img-container {
             width: 150px;
             height: 150px;
@@ -55,17 +73,19 @@
         .img-container img {
             width: 100%;
             height: auto;
+            object-fit: cover;
         }
 
         .card-body {
             display: flex;
+            flex-wrap: wrap;
             flex-direction: column;
-            gap: .5rem;
+            gap: .75rem;
         }
 
         .social-icons {
             margin-top: .5rem;
-            text-align: center;
+            text-align: start;
         }
 
         .social-links {
@@ -116,6 +136,7 @@
         }
 
         .form {
+            margin: 3rem auto;
             display: flex;
             flex-direction: column;
             width: 90%;
@@ -123,14 +144,12 @@
             padding: 1.5rem;
             border-radius: 1rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.407);
-            position: fixed;
             background-color: white;
             z-index: 111;
-            display: none;
         }
-
+        
         .hide {
-            display: block;
+            display: none;
         }
 
         .input-group {
