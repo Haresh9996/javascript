@@ -28,7 +28,7 @@ form.addEventListener("submit", (e) => {
     let users = JSON.parse(localStorage.getItem("usersdata")) || [];
 
     if (!Array.isArray(users)) {
-        users = []; // If not, initialize as an empty array
+        users = []; 
     }
       
     if (editIndex !== null) {
@@ -39,9 +39,9 @@ form.addEventListener("submit", (e) => {
             "email": email,
             "number": number
         };
-        editIndex = null; // Reset editIndex after editing
+        editIndex = null; 
     } else {
-        // Adding new user
+       
         users.push({
             "name": name,
             "about": about,
