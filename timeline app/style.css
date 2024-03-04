@@ -3,12 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-body {
+body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
 }
 
 h1 {
@@ -16,237 +15,164 @@ h1 {
     margin: 1rem;
 }
 
-button.add-timeline {
-    align-self: flex-end;
-    margin-right: 2rem;
+body>button {
     padding: 1rem 2rem;
-    font-size: 1.25rem;
-    cursor: pointer;
-    font-weight: bolder;
     border: none;
     outline: none;
-    background-color: #606060FF;
-    color: #fff;
-    border-radius: .25rem;
-    transition: all .4s;
+    background-color: #404040;
+    margin: 1rem 3rem;
+    align-self: flex-end;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    color: whitesmoke;
+    transition: all 400ms;
 }
-
-button.add-timeline:hover {
-    opacity: .8;
-}
-
-.block{
-    display: block;
+body>button:hover{
+    background-color: #ccc;
+    color: #404040;
 }
 
 .form-container {
     position: fixed;
-    height: 100vh;
+    z-index: 1000;
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1;
-    background-color: #6868688f;
-    /* backdrop-filter: blur(2px); */
-    transition: all .5s;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.486);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     display: none;
 }
 
-.block{
-    display: block;
-}
-
 .form {
-    /* border: 1px solid grey; */
-    margin: 10% auto;
-    padding: 2rem;
-    border-radius: .5rem;
-    max-width: 400px;
-    width: 100%;
     background-color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.326);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.494);
+    border-radius: .5rem;
+    padding: 1.5rem;
+    max-width: 400px;
     position: relative;
+    padding-top: 2rem;
 }
-
-.close-btn {
-    font-size: 1.5rem;
+.form .close-btn{
     position: absolute;
-    top: 2%;
-    right: 2%;
-    transition: all .3s;
+    right: 10px;
+    top: 10px;
+    font-size: 1.5rem;
 }
-
-.close-btn:hover {
-    opacity: .7;
+.form .close-btn:hover{
     color: red;
     cursor: pointer;
 }
-.img-area{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-block: 1rem;
-    border: 1px dashed grey;
-    padding: .5rem;
-    border-radius: .5rem;
-    cursor: pointer;
-}
-.img-area img{
-    max-height: 70px;
-    width: auto;
-}
-.img-area i{
-    font-size: 1.5rem;
-}
-.img-area:hover i{
-    color: rgb(61, 133, 181);
+
+.form label {
+    width: 100%;
+    margin-block: .5rem;
+    /* padding: .5rem; */
 }
 
 .form input,
-form textarea {
-    margin-bottom: 1rem;
+.form textarea {
     width: 100%;
     padding: .5rem;
+    margin-bottom: 10px;
     border-radius: .5rem;
-    outline: none;
     border: 1px solid grey;
+    outline: none;
 }
 
-#formSubmitBtn {
-    padding: .5rem 2rem;
-    background-color: #686868;
-    color: #fff;
-    font-weight: 500;
-}
-
-.timeline {
+.img-area {
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 1px solid grey;
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    height: 100px;
+    /* overflow: hidden; */
+}
+.img{
+    height: 80px;
+    width: auto;
+}
+.timeline {
+    margin-top: 2rem;
+    padding: .5rem;
+    display: flex;
+    /* align-items: center; */
     overflow-x: auto;
-    padding: 1rem;
-    max-width: 90%;
+    justify-content: center;
+    gap: 5px;
 }
 
-.main{
+.event {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    max-width: 200px;
 }
-.main img{
+
+.event:nth-child(odd)>.hr{
+    height: 200px;
+}
+.event-img{
     width: 50px;
-    height: auto;
-}
-
-.year {
-    background-color: rebeccapurple;
-    padding: .5rem 1rem;
-    /* border-radius: .5rem; */
-    font-size: 1.5rem;
     height: 50px;
-    width: 150px;
+    margin-bottom: 1.5rem;
+}
+.year {
+    box-shadow: 0 0 10px black;
+    border-radius: .5rem;
+    padding: .5rem;
+    width: 200px;
+    text-align: center;
+    font-size: 1.25rem;
     position: relative;
-    display: grid;
-    place-items: center;
 }
 
-.year>.bi::before {
+.edit-btn,
+.remove-btn {
     position: absolute;
     top: 10%;
-    right: 4%;
-}
-
-.year i {
     cursor: pointer;
 }
 
-.event:nth-child(odd) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10rem;
-    position: relative;
+.edit-btn {
+    right: 20%;
+    display: none;
+}
+.event:hover .edit-btn{
+    display: inline-block;
 }
 
-.event:nth-child(even) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
+.edit-btn:hover {
+    color: rgb(39, 214, 253);
 }
 
-.event:nth-child(odd)::before {
-    content: "";
-    position: absolute;
-    height: 10rem;
-    width: 4px;
-    background-color: rgb(174, 0, 255);
-    top: 88px;
-    left: 50%;
-    z-index: -1;
-}
-
-.event:nth-child(even)::before {
-    content: "";
-    position: absolute;
-    height: 2rem;
-    width: 4px;
-    background-color: red;
-    top: 88px;
-    left: 50%;
-    z-index: -1;
-}
-
-.card {
-    max-width: 200px;
-    width: 100%;
-    padding: .75rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #facd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.219);
-    position: relative;
-}
-
-.card>.bi::before {
-    position: absolute;
-    top: 5%;
+.remove-btn {
     right: 5%;
+    display: none;
+}
+.event:hover .remove-btn{
+    display: inline-block;
+}
+.remove-btn:hover {
+    color: red;
 }
 
-.card i {
-    font-size: 1.5rem;
-    cursor: pointer;
+.hr {
+    height: 50px;
+    width: 4px;
+    background-color: black;
 }
 
-@media (max-width: 550px) {
-    .timeline {
-        flex-direction: column;
-        gap: .5rem;
-    }
-
-    .event:nth-child(odd) {
-        flex-direction: row;
-        gap: 7rem;
-    }
-
-    .event:nth-child(even) {
-        flex-direction: row;
-    }
-
-    .event:nth-child(odd)::before {
-        height: 4px;
-        width: 7rem;
-        top: 50%;
-        left: 210px;
-    }
-
-    .event:nth-child(even)::before {
-        height: 4px;
-        width: 2rem;
-        top: 50%;
-        left: 210px;
-    }
-    .main{
-        flex-direction: row;
-    }
+.border {
+    box-shadow: 0 0 10px black;
+    border-radius: .5rem;
+    padding: .5rem;
+    width: 200px;
 }

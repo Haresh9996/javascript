@@ -1,48 +1,63 @@
 
-
-let addTimelinebtn = document.querySelector(".add-timeline")
-let closeBtn = document.querySelector(".close-btn")
-let formContainer = document.querySelector(".form-container");
-let form = document.querySelector("form.form");
 let updateIndex = null;
-let mainImage = document.getElementById("img");
+let timelineBtn = document.querySelector(".add-timeline-btn");
+let formContainer = document.querySelector(".form-container");
+let form = document.querySelector(".form");
+let closeForm = document.querySelector(".close-btn");
 
-addTimelinebtn.addEventListener("click", openModal);
+let label = document.querySelector(".img-area");
+let labelIcon = document.querySelector(".img-area i");
+let img = document.querySelector(".img")
+let labelP = document.querySelector(".img-area p");
+let inputImg = document.getElementById("image-input");
 
-closeBtn.addEventListener("click", closeModal);
+let timelineData = JSON.parse(localStorage.getItem("timelineData")) || [];
 
-form.addEventListener('submit', addTimelineData);
+timelineBtn.addEventListener("click", openmodal);
+closeForm.addEventListener("click", closemodal);
 
-mainImage.addEventListener("change", previewImage);
 
-function openModal() {
-    formContainer.style.display = "block";
+function openmodal() {
+    formContainer.style.display = "flex";
 }
-
-function closeModal() {
+function closemodal() {
     formContainer.style.display = "none";
-
-    let i = document.querySelector(".img-area i");
-    let p = document.querySelector(".img-area p");
-    let img = document.querySelector(".img-area img");
-
-    p.style.display = "block";
-    i.style.display = "block";
-    img.style.display = "none";
-
-
+    labelIcon.style.display = "block";
+    labelP.style.display = "block";
+    img.src = "";
+    form.reset();
 }
 
-function addTimelineData(e) {
-    e.preventDefault()
+inputImg.addEventListener("change", () => {
+    const file = inputImg.files[0]; // Get the selected file
 
-    let timelineData = JSON.parse(localStorage.getItem("timelineData")) || [];
+    // Check if a file is selected
+    if (file) {
+        const reader = new FileReader(); // Initialize a new FileReader object
 
-    let year = e.target.year.value.trim();
-    let title = e.target.title.value.trim();
-    let details = e.target.details.value.trim();
-    let img = e.target.img.files[0];
-    let imageUrl = URL.createObjectURL(img);
+        // Define the onload event for the reader
+        reader.onload = function (e) {
+            img.src = e.target.result; // Set the src attribute of the img tag to the loaded data URL
+            labelIcon.style.display = "none"; // Hide the icon
+            labelP.style.display = "none"; // Hide the text
+            img.style.display = "block"; // Show the image
+        }
+
+        // Read the selected file as a data URL
+        reader.readAsDataURL(file);
+    }
+});
+
+// console.log(timelineData)
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let year = e.target.year.value.trim()
+    let title = e.target.title.value.trim()
+    let detail = e.target.detail.value.trim();
+    let cardImage = img.src;
+
+    console.log(year, title, detail, cardImage)
 
     if (!Array.isArray(timelineData)) {
         timelineData = [];
@@ -50,168 +65,95 @@ function addTimelineData(e) {
 
     if (updateIndex !== null) {
         timelineData[updateIndex] = {
-            imageUrl: imageUrl,
             year: year,
             title: title,
-            details: details
+            detail: detail,
+            cardImage: cardImage
         }
         updateIndex = null;
     } else {
-        if (year && title && details) {
+        if (year && title && detail && cardImage) {
             timelineData.push({
-                imageUrl: imageUrl,
                 year: year,
                 title: title,
-                details: details
+                detail: detail,
+                cardImage: cardImage
             })
         } else {
-            alert("Please Fill all the details")
+            alert("please all the details...")
         }
     }
-
     let sortedData = timelineData.sort((a, b) => a.year - b.year);
-    console.log(sortedData)
-
 
     localStorage.setItem("timelineData", JSON.stringify(sortedData));
 
-    e.target.reset();
+    closemodal()
 
-    closeModal();
+    displaydata();
 
-    createTimelineData();
-}
+});
 
-// function createTimelineData() {
+function displaydata() {
+    let timeline = document.querySelector(".timeline");
 
-//     let timelineData = JSON.parse(localStorage.getItem("timelineData"));
+    timeline.innerHTML = '';
 
-
-//     let timelineArea = document.querySelector(".timeline");
-//     let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-        
-//     // Generate unique class name for this event
-//     let eventClass = `event-${index}`;
-//     let event = "";
-
-//     timelineData.forEach((element, index) => {
-//         event += `<div class="event" onclick="">
-//                     <div class="main">
-//                     <img src="${element.imageUrl}" alt="icon">
-//                     <div class="year">${element.year} <i class="bi bi-pencil-square edit-btn" onclick="edit(${index})"></i></div>
-//                     </div>
-//                         <div class="card">
-//                             <i class="bi bi-trash3 trash-btn" onclick="del(${index})"></i>
-//                             <h3 class="title">${element.title}</h3>
-//                             <p class="details">${element.details}</p>
-//                         </div>
-//                     </div>`;
-//     });
-
-//     timelineArea.innerHTML = event;
-
-// }
-
-function createTimelineData() {
-
-    let timelineData = JSON.parse(localStorage.getItem("timelineData"));
-
-    let timelineArea = document.querySelector(".timeline");
-    let event = "";
 
     timelineData.forEach((element, index) => {
-        // Generate random color
-        let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-        
-        // Generate unique class name for this event
-        let eventClass = `event-${index}`;
 
-        event += `<div class="event " onclick="">
-                    <div class="main ${eventClass}">
-                    <img src="${element.imageUrl}" alt="icon">
-                    <div class="year ${eventClass}">${element.year} <i class="bi bi-pencil-square edit-btn" onclick="edit(${index})"></i></div>
-                    </div>
-                        <div class="card ${eventClass}">
-                            <i class="bi bi-trash3 trash-btn" onclick="del(${index})"></i>
-                            <h3 class="title">${element.title}</h3>
-                            <p class="details">${element.details}</p>
-                        </div>
-                    </div>`;
+        let bgClass = `event-${index}`;
 
-        // Add CSS style for this event class
+        timeline.innerHTML += `<div class="event">
+                                <img src="${element.cardImage}" alt="link" class="event-img">
+                                <div class="year ${bgClass}">
+                                    ${element.year}
+                                    <i class="fa-regular fa-pen-to-square edit-btn" onclick="edit(${index})"></i>
+                                    <i class="fa-regular fa-trash-can remove-btn" onclick="remove(${index})"></i>
+                                </div>
+                                <div class="hr ${bgClass}"></div>
+                                <div class="border ${bgClass}">
+                                    <h3 class="title">${element.title}</h3>
+                                    <div class="details">${element.detail}</div>
+                                </div>
+                            </div>`;
+
+        function getRandomColor() {
+            let red = Math.floor(Math.random() * 155) + 100;
+            let green = Math.floor(Math.random() * 155) + 100;
+            let blue = Math.floor(Math.random() * 155) + 100;
+            let rgb = `rgb(${red}, ${green}, ${blue})`
+            return rgb;
+        }
+
+        let randomColor = getRandomColor();
+
         let style = document.createElement('style');
-        style.innerHTML = `
-            .${eventClass} {
-                background-color: ${randomColor};
-            }
-        `;
+        style.innerHTML = `.${bgClass} {
+                            background-color: ${randomColor};
+                            }`;
         document.head.appendChild(style);
-    });
-
-    timelineArea.innerHTML = event;
-
+    })
 }
 
+displaydata()
 
-function del(i) {
-    let timelineData = JSON.parse(localStorage.getItem("timelineData"));
+function remove(i) {
     timelineData.splice(i, 1);
     localStorage.setItem("timelineData", JSON.stringify(timelineData));
-    createTimelineData();
+    displaydata();
 }
 
 function edit(i) {
-    let timelineData = JSON.parse(localStorage.getItem("timelineData"));
-    let finalData = timelineData[i];
+    timeline = timelineData[i];
 
-    form.title.value = finalData.title;
-    form.year.value = finalData.year;
-    form.details.value = finalData.details;
+    img.src = timeline.cardImage;
+    form.title.value = timeline.title;
+    form.year.value = timeline.year;
+    form.detail.value = timeline.detail;
+
+    labelP.style.display = "none";
+    labelIcon.style.display = "none";
 
     updateIndex = i;
-
-    openModal()
-    localStorage.setItem("timelineData", JSON.stringify(timelineData));
-
-    console.log(finalData)
+    openmodal();
 }
-
-function getRandomColor() {
-    let red = Math.floor(Math.random() * 155) + 100;
-    let green = Math.floor(Math.random() * 155) + 100;
-    let blue = Math.floor(Math.random() * 155) + 100;
-    let rgb = `rgb(${red}, ${green}, ${blue})`
-
-
-}
-getRandomColor();
-
-function previewImage(e) {
-
-    let label = document.querySelector(".img-area");
-    let i = document.querySelector(".img-area i");
-    let p = document.querySelector(".img-area p");
-    let img = e.target.files[0];
-    let reader = new FileReader();
-    console.log("reader", reader)
-
-    reader.onload = function (event) {
-        console.log(event.target.result)
-        let image = event.target.result;
-        let finalImg = document.createElement("img");
-        finalImg.classList.add("added-img");
-        finalImg.src = image;
-        // label.innerHTML = "";
-        p.style.display = "none";
-        i.style.display = "none";
-        label.appendChild(finalImg);
-
-        localStorage.setItem("selectedImage", image);
-    };
-    console.log(reader)
-
-    reader.readAsDataURL(img);
-
-}
-
-createTimelineData()
