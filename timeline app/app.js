@@ -29,26 +29,21 @@ function closemodal() {
 }
 
 inputImg.addEventListener("change", () => {
-    const file = inputImg.files[0]; // Get the selected file
+    const file = inputImg.files[0];
 
-    // Check if a file is selected
     if (file) {
-        const reader = new FileReader(); // Initialize a new FileReader object
+        const reader = new FileReader();
 
-        // Define the onload event for the reader
         reader.onload = function (e) {
-            img.src = e.target.result; // Set the src attribute of the img tag to the loaded data URL
-            labelIcon.style.display = "none"; // Hide the icon
-            labelP.style.display = "none"; // Hide the text
-            img.style.display = "block"; // Show the image
+            img.src = e.target.result;
+            labelIcon.style.display = "none";
+            labelP.style.display = "none";
+            img.style.display = "block";
         }
 
-        // Read the selected file as a data URL
         reader.readAsDataURL(file);
     }
 });
-
-// console.log(timelineData)
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -59,30 +54,34 @@ form.addEventListener("submit", (e) => {
 
     console.log(year, title, detail, cardImage)
 
-    if (!Array.isArray(timelineData)) {
-        timelineData = [];
-    }
+    if (year && title && detail && cardImage) {
 
-    if (updateIndex !== null) {
-        timelineData[updateIndex] = {
-            year: year,
-            title: title,
-            detail: detail,
-            cardImage: cardImage
+        if (!Array.isArray(timelineData)) {
+            timelineData = [];
         }
-        updateIndex = null;
-    } else {
-        if (year && title && detail && cardImage) {
+
+        if (updateIndex !== null) {
+            timelineData[updateIndex] = {
+                year: year,
+                title: title,
+                detail: detail,
+                cardImage: cardImage
+            }
+            updateIndex = null;
+        } else {
+
             timelineData.push({
                 year: year,
                 title: title,
                 detail: detail,
                 cardImage: cardImage
             })
-        } else {
-            alert("please all the details...")
         }
+
+    } else {
+        alert("please fill all the details")
     }
+
     let sortedData = timelineData.sort((a, b) => a.year - b.year);
 
     localStorage.setItem("timelineData", JSON.stringify(sortedData));
@@ -104,7 +103,7 @@ function displaydata() {
         let bgClass = `event-${index}`;
 
         timeline.innerHTML += `<div class="event">
-                                <img src="${element.cardImage}" alt="link" class="event-img">
+                                <img src="${element.cardImage}" alt="icon" class="event-img">
                                 <div class="year ${bgClass}">
                                     ${element.year}
                                     <i class="fa-regular fa-pen-to-square edit-btn" onclick="edit(${index})"></i>

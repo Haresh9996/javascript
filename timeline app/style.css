@@ -3,7 +3,8 @@
     margin: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +29,8 @@ body>button {
     color: whitesmoke;
     transition: all 400ms;
 }
-body>button:hover{
+
+body>button:hover {
     background-color: #ccc;
     color: #404040;
 }
@@ -56,13 +58,15 @@ body>button:hover{
     position: relative;
     padding-top: 2rem;
 }
-.form .close-btn{
+
+.form .close-btn {
     position: absolute;
     right: 10px;
     top: 10px;
     font-size: 1.5rem;
 }
-.form .close-btn:hover{
+
+.form .close-btn:hover {
     color: red;
     cursor: pointer;
 }
@@ -83,6 +87,18 @@ body>button:hover{
     outline: none;
 }
 
+.form input[type="submit"] {
+    background-color: #ccc;
+    color: #404040;
+    transition: all 400ms;
+    cursor: pointer;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #404040;
+    color: whitesmoke;
+}
+
 .img-area {
     padding: .5rem;
     border-radius: .5rem;
@@ -95,10 +111,12 @@ body>button:hover{
     height: 100px;
     /* overflow: hidden; */
 }
-.img{
+
+.img {
     height: 80px;
     width: auto;
 }
+
 .timeline {
     margin-top: 2rem;
     padding: .5rem;
@@ -116,14 +134,16 @@ body>button:hover{
     max-width: 200px;
 }
 
-.event:nth-child(odd)>.hr{
+.event:nth-child(odd)>.hr {
     height: 200px;
 }
-.event-img{
+
+.event-img {
     width: 50px;
     height: 50px;
     margin-bottom: 1.5rem;
 }
+
 .year {
     box-shadow: 0 0 10px black;
     border-radius: .5rem;
@@ -145,7 +165,8 @@ body>button:hover{
     right: 20%;
     display: none;
 }
-.event:hover .edit-btn{
+
+.event:hover .edit-btn {
     display: inline-block;
 }
 
@@ -157,9 +178,11 @@ body>button:hover{
     right: 5%;
     display: none;
 }
-.event:hover .remove-btn{
+
+.event:hover .remove-btn {
     display: inline-block;
 }
+
 .remove-btn:hover {
     color: red;
 }
