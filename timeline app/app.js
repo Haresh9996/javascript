@@ -160,14 +160,22 @@ function displaydata() {
 displaydata()
 
 function remove(i) {
-    let response = confirm("Are you sure you want to delete?");
-    if(response){
+    let modal = document.querySelector(".modal-container");
+    let yes = document.querySelector(".yes");
+    let no = document.querySelector(".no");
+
+    modal.style.display = "grid";
+
+    yes.addEventListener("click", ()=>{
         timelineData.splice(i, 1);
         localStorage.setItem("timelineData", JSON.stringify(timelineData));
         displaydata();
-    }else{
-        alert("your data has been secured.");
-    }
+        modal.style.display = "none";
+    })
+
+    no.addEventListener("click", ()=>{
+        modal.style.display = "none";
+    })
 }
 
 function edit(i) {
