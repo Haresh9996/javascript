@@ -30,14 +30,14 @@ function closemodal() {
 
 // const imageInput = document.getElementById('image-input');
 
-inputImg.addEventListener('change', function() {
+inputImg.addEventListener('change', function () {
     const file = this.files[0];
 
     const validExtensions = ['image/jpeg', 'image/png'];
     if (validExtensions.includes(file.type)) {
         const reader = new FileReader();
 
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             img.src = e.target.result;
         };
 
@@ -160,9 +160,14 @@ function displaydata() {
 displaydata()
 
 function remove(i) {
-    timelineData.splice(i, 1);
-    localStorage.setItem("timelineData", JSON.stringify(timelineData));
-    displaydata();
+    let response = confirm("Are you sure you want to delete?");
+    if(response){
+        timelineData.splice(i, 1);
+        localStorage.setItem("timelineData", JSON.stringify(timelineData));
+        displaydata();
+    }else{
+        alert("your data has been secured.");
+    }
 }
 
 function edit(i) {
