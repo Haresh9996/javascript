@@ -87,18 +87,6 @@ body>button:hover {
     outline: none;
 }
 
-.form input[type="submit"] {
-    background-color: #ccc;
-    color: #404040;
-    transition: all 400ms;
-    cursor: pointer;
-}
-
-.form input[type="submit"]:hover {
-    background-color: #404040;
-    color: whitesmoke;
-}
-
 .img-area {
     padding: .5rem;
     border-radius: .5rem;
@@ -118,13 +106,25 @@ body>button:hover {
 }
 
 .timeline {
+    max-width: 90dvw;
     margin-top: 2rem;
-    padding: .5rem;
+    padding: 1rem;
     display: flex;
-    /* align-items: center; */
     overflow-x: auto;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 5px;
+}
+
+.timeline::-webkit-scrollbar {
+    background-color: #404040;
+}
+
+.timeline ::-webkit-scrollbar-button {
+    background-color: #ccc;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+    background-color: #ccc;
 }
 
 .event {
@@ -199,3 +199,4 @@ body>button:hover {
     padding: .5rem;
     width: 200px;
 }
+

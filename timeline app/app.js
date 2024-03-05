@@ -28,22 +28,49 @@ function closemodal() {
     form.reset();
 }
 
-inputImg.addEventListener("change", () => {
-    const file = inputImg.files[0];
+// const imageInput = document.getElementById('image-input');
 
-    if (file) {
+inputImg.addEventListener('change', function() {
+    const file = this.files[0];
+
+    const validExtensions = ['image/jpeg', 'image/png'];
+    if (validExtensions.includes(file.type)) {
         const reader = new FileReader();
 
-        reader.onload = function (e) {
+        reader.onload = function(e) {
             img.src = e.target.result;
-            labelIcon.style.display = "none";
-            labelP.style.display = "none";
-            img.style.display = "block";
-        }
+        };
 
         reader.readAsDataURL(file);
+        labelP.style.display = 'none';
+        labelIcon.style.display = 'none';
+    } else {
+        img.src = '';
+        labelP.style.display = 'block';
+        labelP.textContent = 'Please upload a valid image file (JPEG or PNG).';
     }
 });
+// inputImg.addEventListener("change", () => {
+//     const file = inputImg.files[0]; // Get the selected file
+
+//     // Check if a file is selected
+//     if (file) {
+//         const reader = new FileReader(); // Initialize a new FileReader object
+
+//         // Define the onload event for the reader
+//         reader.onload = function (e) {
+//             img.src = e.target.result; // Set the src attribute of the img tag to the loaded data URL
+//             labelIcon.style.display = "none"; // Hide the icon
+//             labelP.style.display = "none"; // Hide the text
+//             img.style.display = "block"; // Show the image
+//         }
+
+//         // Read the selected file as a data URL
+//         reader.readAsDataURL(file);
+//     }
+// });
+
+// console.log(timelineData)
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -54,34 +81,30 @@ form.addEventListener("submit", (e) => {
 
     console.log(year, title, detail, cardImage)
 
-    if (year && title && detail && cardImage) {
+    if (!Array.isArray(timelineData)) {
+        timelineData = [];
+    }
 
-        if (!Array.isArray(timelineData)) {
-            timelineData = [];
+    if (updateIndex !== null) {
+        timelineData[updateIndex] = {
+            year: year,
+            title: title,
+            detail: detail,
+            cardImage: cardImage
         }
-
-        if (updateIndex !== null) {
-            timelineData[updateIndex] = {
-                year: year,
-                title: title,
-                detail: detail,
-                cardImage: cardImage
-            }
-            updateIndex = null;
-        } else {
-
+        updateIndex = null;
+    } else {
+        if (year && title && detail && cardImage) {
             timelineData.push({
                 year: year,
                 title: title,
                 detail: detail,
                 cardImage: cardImage
             })
+        } else {
+            alert("please all the details...")
         }
-
-    } else {
-        alert("please fill all the details")
     }
-
     let sortedData = timelineData.sort((a, b) => a.year - b.year);
 
     localStorage.setItem("timelineData", JSON.stringify(sortedData));
@@ -103,7 +126,7 @@ function displaydata() {
         let bgClass = `event-${index}`;
 
         timeline.innerHTML += `<div class="event">
-                                <img src="${element.cardImage}" alt="icon" class="event-img">
+                                <img src="${element.cardImage}" alt="link" class="event-img">
                                 <div class="year ${bgClass}">
                                     ${element.year}
                                     <i class="fa-regular fa-pen-to-square edit-btn" onclick="edit(${index})"></i>
@@ -156,3 +179,4 @@ function edit(i) {
     updateIndex = i;
     openmodal();
 }
+
