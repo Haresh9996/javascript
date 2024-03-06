@@ -21,11 +21,12 @@ function openmodal() {
     formContainer.style.display = "flex";
 }
 function closemodal() {
-    formContainer.style.display = "none";
     labelIcon.style.display = "block";
     labelP.style.display = "block";
     img.src = "";
     form.reset();
+    formContainer.style.display = "none";
+    updateIndex = null;
 }
 
 // const imageInput = document.getElementById('image-input');
@@ -51,28 +52,6 @@ inputImg.addEventListener('change', function () {
     }
 });
 
-
-// inputImg.addEventListener("change", () => {
-//     const file = inputImg.files[0]; // Get the selected file
-
-//     // Check if a file is selected
-//     if (file) {
-//         const reader = new FileReader(); // Initialize a new FileReader object
-
-//         // Define the onload event for the reader
-//         reader.onload = function (e) {
-//             img.src = e.target.result; // Set the src attribute of the img tag to the loaded data URL
-//             labelIcon.style.display = "none"; // Hide the icon
-//             labelP.style.display = "none"; // Hide the text
-//             img.style.display = "block"; // Show the image
-//         }
-
-//         // Read the selected file as a data URL
-//         reader.readAsDataURL(file);
-//     }
-// });
-
-// console.log(timelineData)
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -105,8 +84,10 @@ form.addEventListener("submit", (e) => {
             })
         } else {
             alert("please all the details...")
+            return;
         }
     }
+    
     let sortedData = timelineData.sort((a, b) => a.year - b.year);
 
     localStorage.setItem("timelineData", JSON.stringify(sortedData));
