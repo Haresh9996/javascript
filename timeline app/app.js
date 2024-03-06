@@ -50,6 +50,8 @@ inputImg.addEventListener('change', function () {
         labelP.textContent = 'Please upload a valid image file (JPEG or PNG).';
     }
 });
+
+
 // inputImg.addEventListener("change", () => {
 //     const file = inputImg.files[0]; // Get the selected file
 
@@ -126,7 +128,9 @@ function displaydata() {
         let bgClass = `event-${index}`;
 
         timeline.innerHTML += `<div class="event">
+                                <div class="event-img-container">
                                 <img src="${element.cardImage}" alt="link" class="event-img">
+                                </div>
                                 <div class="year ${bgClass}">
                                     ${element.year}
                                     <i class="fa-regular fa-pen-to-square edit-btn" onclick="edit(${index})"></i>
