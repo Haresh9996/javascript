@@ -138,10 +138,16 @@ body>button:hover {
     height: 200px;
 }
 
-.event-img {
-    width: 50px;
-    height: 50px;
+.event-img-container{
+    width: 80px;
+    height: 60px;
     margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+.event-img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .year {
@@ -198,6 +204,26 @@ body>button:hover {
     border-radius: .5rem;
     padding: .5rem;
     width: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.border::-webkit-scrollbar {
+    background-color: #404040;
+    width: 5px;
+}
+
+.border ::-webkit-scrollbar-button {
+    background-color: #ccc;
+}
+
+.border::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+
+.details, .title {
+    word-break: break-all;
+    width: 100%;
 }
 
 @media (max-width: 800px) {
@@ -209,9 +235,11 @@ body>button:hover {
         flex-direction: row;
         max-width: 90dvw;
     }
-    .event-img{
+    .event-img-container{
         margin-bottom: 0;
         margin-right: 1rem;
+        display: grid;
+        place-items: center;
     }
     .year{
         width: 100px;
@@ -233,6 +261,8 @@ body>button:hover {
     display: grid;
     place-items: center;
     position: fixed;
+    top: 0;
+    left: 0;
     display: none;
 }
 

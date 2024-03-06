@@ -21,11 +21,12 @@ function openmodal() {
     formContainer.style.display = "flex";
 }
 function closemodal() {
-    formContainer.style.display = "none";
     labelIcon.style.display = "block";
     labelP.style.display = "block";
     img.src = "";
     form.reset();
+    formContainer.style.display = "none";
+    updateIndex = null;
 }
 
 // const imageInput = document.getElementById('image-input');
@@ -50,27 +51,7 @@ inputImg.addEventListener('change', function () {
         labelP.textContent = 'Please upload a valid image file (JPEG or PNG).';
     }
 });
-// inputImg.addEventListener("change", () => {
-//     const file = inputImg.files[0]; // Get the selected file
 
-//     // Check if a file is selected
-//     if (file) {
-//         const reader = new FileReader(); // Initialize a new FileReader object
-
-//         // Define the onload event for the reader
-//         reader.onload = function (e) {
-//             img.src = e.target.result; // Set the src attribute of the img tag to the loaded data URL
-//             labelIcon.style.display = "none"; // Hide the icon
-//             labelP.style.display = "none"; // Hide the text
-//             img.style.display = "block"; // Show the image
-//         }
-
-//         // Read the selected file as a data URL
-//         reader.readAsDataURL(file);
-//     }
-// });
-
-// console.log(timelineData)
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -78,8 +59,6 @@ form.addEventListener("submit", (e) => {
     let title = e.target.title.value.trim()
     let detail = e.target.detail.value.trim();
     let cardImage = img.src;
-
-    console.log(year, title, detail, cardImage)
 
     if (!Array.isArray(timelineData)) {
         timelineData = [];
@@ -103,8 +82,10 @@ form.addEventListener("submit", (e) => {
             })
         } else {
             alert("please all the details...")
+            return;
         }
     }
+
     let sortedData = timelineData.sort((a, b) => a.year - b.year);
 
     localStorage.setItem("timelineData", JSON.stringify(sortedData));
@@ -126,11 +107,13 @@ function displaydata() {
         let bgClass = `event-${index}`;
 
         timeline.innerHTML += `<div class="event">
+                                <div class="event-img-container">
                                 <img src="${element.cardImage}" alt="link" class="event-img">
+                                </div>
                                 <div class="year ${bgClass}">
                                     ${element.year}
                                     <i class="fa-regular fa-pen-to-square edit-btn" onclick="edit(${index})"></i>
-                                    <i class="fa-regular fa-trash-can remove-btn" onclick="remove(${index})"></i>
+                                    <i class="fa-regular fa-trash-can remove-btn")"></i>
                                 </div>
                                 <div class="hr ${bgClass}"></div>
                                 <div class="border ${bgClass}">
@@ -155,27 +138,29 @@ function displaydata() {
                             }`;
         document.head.appendChild(style);
     })
-}
 
-displaydata()
+    let removeBtns = document.querySelectorAll(".remove-btn");
+    removeBtns.forEach((btn, index) => {
+        let modal = document.querySelector(".modal-container");
+        let yes = document.querySelector(".yes");
+        let no = document.querySelector(".no");
 
-function remove(i) {
-    let modal = document.querySelector(".modal-container");
-    let yes = document.querySelector(".yes");
-    let no = document.querySelector(".no");
-
-    modal.style.display = "grid";
-
-    yes.addEventListener("click", ()=>{
-        timelineData.splice(i, 1);
-        localStorage.setItem("timelineData", JSON.stringify(timelineData));
-        displaydata();
-        modal.style.display = "none";
-    })
-
-    no.addEventListener("click", ()=>{
-        modal.style.display = "none";
-    })
+        btn.addEventListener("click", (e) => {
+            modal.style.display = "grid";
+            yes.onclick = function(){
+                e.stopPropagation();
+                let eventElement = e.target.closest(".event");
+                let targetedIndex = Array.from(eventElement.parentNode.children).indexOf(eventElement);
+                timelineData.splice(targetedIndex, 1);
+                localStorage.setItem("timelineData", JSON.stringify(timelineData));
+                modal.style.display = "none";
+                displaydata();
+            }
+            no.onclick = function(){
+                modal.style.display = "none";
+            }
+        });
+    });
 }
 
 function edit(i) {
@@ -193,3 +178,4 @@ function edit(i) {
     openmodal();
 }
 
+displaydata()
