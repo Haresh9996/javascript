@@ -60,8 +60,6 @@ form.addEventListener("submit", (e) => {
     let detail = e.target.detail.value.trim();
     let cardImage = img.src;
 
-    console.log(year, title, detail, cardImage)
-
     if (!Array.isArray(timelineData)) {
         timelineData = [];
     }
@@ -87,7 +85,7 @@ form.addEventListener("submit", (e) => {
             return;
         }
     }
-    
+
     let sortedData = timelineData.sort((a, b) => a.year - b.year);
 
     localStorage.setItem("timelineData", JSON.stringify(sortedData));
@@ -115,7 +113,7 @@ function displaydata() {
                                 <div class="year ${bgClass}">
                                     ${element.year}
                                     <i class="fa-regular fa-pen-to-square edit-btn" onclick="edit(${index})"></i>
-                                    <i class="fa-regular fa-trash-can remove-btn" onclick="remove(${index})"></i>
+                                    <i class="fa-regular fa-trash-can remove-btn")"></i>
                                 </div>
                                 <div class="hr ${bgClass}"></div>
                                 <div class="border ${bgClass}">
@@ -140,27 +138,29 @@ function displaydata() {
                             }`;
         document.head.appendChild(style);
     })
-}
 
-displaydata()
+    let removeBtns = document.querySelectorAll(".remove-btn");
+    removeBtns.forEach((btn, index) => {
+        let modal = document.querySelector(".modal-container");
+        let yes = document.querySelector(".yes");
+        let no = document.querySelector(".no");
 
-function remove(i) {
-    let modal = document.querySelector(".modal-container");
-    let yes = document.querySelector(".yes");
-    let no = document.querySelector(".no");
-
-    modal.style.display = "grid";
-
-    yes.addEventListener("click", ()=>{
-        timelineData.splice(i, 1);
-        localStorage.setItem("timelineData", JSON.stringify(timelineData));
-        displaydata();
-        modal.style.display = "none";
-    })
-
-    no.addEventListener("click", ()=>{
-        modal.style.display = "none";
-    })
+        btn.addEventListener("click", (e) => {
+            modal.style.display = "grid";
+            yes.onclick = function(){
+                e.stopPropagation();
+                let eventElement = e.target.closest(".event");
+                let targetedIndex = Array.from(eventElement.parentNode.children).indexOf(eventElement);
+                timelineData.splice(targetedIndex, 1);
+                localStorage.setItem("timelineData", JSON.stringify(timelineData));
+                modal.style.display = "none";
+                displaydata();
+            }
+            no.onclick = function(){
+                modal.style.display = "none";
+            }
+        });
+    });
 }
 
 function edit(i) {
@@ -178,3 +178,4 @@ function edit(i) {
     openmodal();
 }
 
+displaydata()
