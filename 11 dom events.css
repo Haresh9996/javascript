@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --primary-color: #efefef;
     --font-clr: #373939;
 }
@@ -17,7 +17,7 @@ header {
     background-repeat: no-repeat;
     position: relative;
     min-height: 50vh;
-    height: 70vh;
+    height: 60vh;
 }
 
 .main-header {
@@ -61,7 +61,8 @@ header {
     -webkit-text-stroke: 1px var(--primary-color);
     -webkit-text-fill-color: transparent;
 }
-.nav-container .logo:hover{
+
+.nav-container .logo:hover {
     -webkit-text-fill-color: var(--primary-color);
 }
 
@@ -74,11 +75,12 @@ header {
     cursor: pointer;
     transition: all 500ms;
 }
-.nav-list li:hover{
+
+.nav-list li:hover {
     scale: 1.2;
 }
 
-.section-todo{
+.section-todo {
     margin-block: 3rem;
 }
 
@@ -95,13 +97,13 @@ header {
     color: lime;
 } */
 
-h3{
+h3 {
     text-align: center;
     font-size: 2rem;
     margin-top: 3rem;
 }
 
-.todo-list{
+.todo-list {
     width: 90%;
     max-width: 650px;
     margin: auto;
@@ -109,7 +111,7 @@ h3{
     /* padding: .5rem; */
 }
 
-.todo-list .list-items{
+.todo-list .list-items {
     list-style: none;
     padding: .5rem 1.5rem;
     text-transform: capitalize;
@@ -123,7 +125,7 @@ h3{
     justify-content: space-between;
 }
 
-.todo-list .btn{
+.todo-list .btn {
     background-color: var(--font-clr);
     color: var(--primary-color);
     margin-top: 0;
@@ -173,9 +175,10 @@ h3{
     font-weight: bold;
 }
 
-.input-group input[type = "number"]::-webkit-inner-spin-button{
+.input-group input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
 .input-group input[type="number"] {
     -moz-appearance: textfield;
 }
@@ -206,4 +209,55 @@ textarea {
 
 .input-btn button {
     padding: .5rem 2rem;
+}
+
+.data-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    width: 100%;
+    max-width: fit-content;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: whitesmoke;
+    border-radius: .5rem;
+}
+
+.data-h3 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.counter {
+    padding: 1rem;
+    background-color: #1a2022;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.counter span {
+    margin-inline: 5px;
+}
+
+.progress {
+    height: 10px;
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.final-progress {
+    height: 100%;
+    /* width: 0; */
+    background-color: #1a2022;
+    transition: all .4s;
 }
