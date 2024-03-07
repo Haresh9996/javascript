@@ -1,11 +1,41 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin: auto;
+}
+
+.search-box input[type="button"] {
+    cursor: pointer;
+    background-color: #656768;
+    color: #ddd;
+    font-weight: 700;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-box input[type="search"] {
+    border-radius: 5px 0 0 5px;
+}
+
+.search-box input[type="search"],
+.search-box input[type="button"] {
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
 }
 
 table {
@@ -20,31 +50,38 @@ table {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
-h3{
+
+h3 {
     width: 100%;
     max-width: 800px;
     margin: 15px auto;
     padding: 12px;
     font-size: 1.5rem;
 }
-h3 i{
+
+h3 i {
     margin-inline: 7px;
     font-size: 1.5rem;
     cursor: pointer;
 }
-h3 i:first-child{
+
+h3 i:first-child {
     color: #007bff;
     font-size: 2rem;
 }
-h3 i:nth-child(2){
+
+h3 i:nth-child(2) {
     animation: margin0 .7s ease-out infinite alternate-reverse;
 }
 
 @keyframes margin0 {
-    to{translate: 10px 0;}
+    to {
+        translate: 10px 0;
+    }
 }
 
-th, td {
+th,
+td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -85,7 +122,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-span i{
+span i {
     margin-right: 15px;
     cursor: pointer;
     color: #262629;
@@ -95,20 +132,22 @@ span i{
 span i:hover {
     color: #656768;
 }
-.fa-trash-can{
+
+.fa-trash-can {
     color: red;
 }
 
-.fa-pen-to-square{
+.fa-pen-to-square {
     color: #007bff;
 }
-form{
+
+form {
     display: none;
     scale: 0 1;
     transition: all .4s;
 }
 
-.hide{
+.hide {
     display: block;
     scale: 1 1;
 }

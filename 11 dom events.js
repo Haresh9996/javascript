@@ -16,13 +16,11 @@ formTodo.addEventListener("submit", (e) => {
         alert("Please add a todo");
         return;
     }
-
-    // Add new todo item
     addTodoItem(todoText);
 
-    // Clear input field
     inputText.value = "";
 });
+const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 function addTodoItem(todoText) {
     // Create new todo item
@@ -33,11 +31,10 @@ function addTodoItem(todoText) {
                         <button class="btn done">done</button> 
                         <button class="btn remove">remove</button>
                     </div>`;
-    todoList.appendChild(li);   
-    
-    const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
-            savedTodos.push(todoText);
-            localStorage.setItem("todos", JSON.stringify(savedTodos));
+    todoList.appendChild(li);
+
+    savedTodos.push(todoText);
+    localStorage.setItem("todos", JSON.stringify(savedTodos));
 }
 
 todoList.addEventListener("click", (e) => {
@@ -53,6 +50,18 @@ todoList.addEventListener("click", (e) => {
         //     savedTodos.splice(index, 1);
         // }
         e.target.parentNode.parentNode.remove();
-        
+
     }
 });
+
+// let progress = document.querySelector(".final-progress");
+// let completedTasks = document.querySelector(".completed");
+// let totalTasks = document.querySelector(".task-items");
+
+// let data = JSON.parse(localStorage.getItem("todos"));
+
+// if(!Array.isArray(data)){
+//     data = []
+// }
+
+// console.log(data.length);
