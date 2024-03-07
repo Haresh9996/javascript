@@ -1,6 +1,19 @@
 let form = document.querySelector(".add");
 let tbody = document.querySelector(".tbody");
 let adduser = document.querySelector(".add-user");
+let searchInput = document.querySelector("#search");
+
+searchInput.addEventListener("input", (e) => {
+    let seachValue = e.target.value.toLowerCase().trim()
+    let users = JSON.parse(localStorage.getItem("usersdata")) || [];
+
+    if (seachValue !== " ") {
+        let filteredData = users.filter(item => {
+            let name = item.name;
+        })
+    }
+
+})
 
 adduser.addEventListener("click", () => {
     form.classList.toggle("hide");
@@ -28,20 +41,18 @@ form.addEventListener("submit", (e) => {
     let users = JSON.parse(localStorage.getItem("usersdata")) || [];
 
     if (!Array.isArray(users)) {
-        users = []; // If not, initialize as an empty array
+        users = [];
     }
-      
+
     if (editIndex !== null) {
-        // Editing existing user
         users[editIndex] = {
             "name": name,
             "about": about,
             "email": email,
             "number": number
         };
-        editIndex = null; // Reset editIndex after editing
+        editIndex = null;
     } else {
-        // Adding new user
         users.push({
             "name": name,
             "about": about,
@@ -52,7 +63,7 @@ form.addEventListener("submit", (e) => {
 
     localStorage.setItem("usersdata", JSON.stringify(users));
     e.target.reset();
-    
+
     form.classList.toggle("hide");
     createData();
 })
@@ -111,4 +122,36 @@ let remove = (i) => {
     createData();
 }
 
+let search = document.getElementById("search");
+
+function searchData(){
+    let tr = tbody.querySelectorAll("tr");
+
+    let value = search.value.toLowerCase().trim();
+
+    tr.forEach((elm)=>{
+        let tds = elm.querySelectorAll("td")
+        let checktext = false;
+
+        tds.forEach(td => {
+            let tdText = td.textContent.toLowerCase().trim();
+            if(tdText.includes(value)){
+                checktext = true;
+            }
+        })
+
+        if(checktext){
+            elm.style.display = "";
+        }else{
+            elm.style.display = "none";
+        }
+
+    })
+    
+}
+
+search.addEventListener("input", searchData)
+
+
 createData()
+
