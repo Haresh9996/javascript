@@ -36,6 +36,18 @@
             transition: all .5s;
             position: relative;
         }
+        .upload-area{
+            min-height: 100px;
+            height: 110px;
+            min-width: 400px;
+            overflow: hidden;
+        }
+        .upload-area img{
+            width: auto;
+            height: 90px;
+            object-fit: contain;
+            object-position: center;
+        }
 
         .card:hover {
             background: var(--second-conic);
@@ -73,7 +85,6 @@
         .img-container img {
             width: 100%;
             height: auto;
-            object-fit: cover;
         }
 
         .card-body {
@@ -111,27 +122,17 @@
         .github p {
             font-size: .75rem;
         }
-
-        .add-user {
-            position: fixed;
-            bottom: 3rem;
-            right: 3rem;
-            background: var(--second-conic);
-            color: white;
-            border-radius: 50%;
+        .add-user{
             padding: 1rem;
+            margin: 1rem 3rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 20px;
+            font-size: 1.5rem;
         }
 
-        .add-user:hover {
-            background: var(--conic-color);
+        .showFormButton{
             cursor: pointer;
-            filter: brightness(80%);
-        }
-
-        .add-user i {
             font-size: 3rem;
         }
 
@@ -146,11 +147,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.407);
             background-color: white;
             z-index: 111;
-        }
-        
-        .hide {
             display: none;
         }
+      
 
         .input-group {
             margin-block: .5rem;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>TIMELINE</h1>
+
+    <button class="add-timeline-btn">Add Timeline</button>
+
+    <div class="form-container">
+        <form class="form">
+            <i class="fa-solid fa-xmark close-btn"></i>
+            <label for="image-input" class="img-area">
+                <img src="" alt="" class="img">
+                <i class="fa-regular fa-image add-img"></i>
+                <p class="img-text">Please add Image...</p>
+            </label>
+            <input type="file" name="image" id="image-input" accept="image/jpeg, image/png" hidden>
+            <label for="year">Year</label>
+            <input type="date" name="year" id="year">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+            <label for="detail">Description</label>
+            <textarea name="detail" id="detail"></textarea>
+            <input type="submit" id="form-submit-btn">
+        </form>
+    </div>
+
+    <div class="timeline"></div>
+
+    <div class="modal-container">
+        <div class="modal">
+            <p>Are you sure you want to delete?</p>
+            <div class="modal-btns">
+                <button class="yes">Yes</button>
+                <button class="no">No</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        
+    </style>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
